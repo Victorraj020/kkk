@@ -1,9 +1,8 @@
 [build]
-  # Use npm to install and build. `npm ci` uses the repo `package-lock.json` and
-  # avoids Yarn v4 resolver issues in Netlify CI.
+  # Use npm for installing and building
   command = "npm ci && npm run build"
-  # Next.js is configured with `output: 'export'` so the static export will be
-  # written to `out` — Netlify should publish that directory.
+
+  # Next.js static export gets generated into /out
   publish = "out"
 
 [[plugins]]
@@ -11,8 +10,10 @@
 
 [build.environment]
   NODE_VERSION = "18"
+  NETLIFY_USE_YARN = "false"
+  NPM_FLAGS = "--no-audit --no-fund"
 
-# Headers
+# Security headers
 [[headers]]
   for = "/*"
   [headers.values]
