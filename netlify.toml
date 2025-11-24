@@ -1,6 +1,10 @@
 [build]
-  command = "npm run build"
-  publish = ".next"
+  # Use npm to install and build. `npm ci` uses the repo `package-lock.json` and
+  # avoids Yarn v4 resolver issues in Netlify CI.
+  command = "npm ci && npm run build"
+  # Next.js is configured with `output: 'export'` so the static export will be
+  # written to `out` — Netlify should publish that directory.
+  publish = "out"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
