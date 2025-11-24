@@ -1,7 +1,7 @@
 [build]
-  # Force Netlify to use npm and produce a static export. This runs a clean
-  # install with npm and then exports to the `out` directory.
-  command = "npm ci && npm run export"
+  # Use npm to install and run the Next.js build. `next.config.js` already
+  # sets `output: 'export'`, so `next build` will produce the `out` directory.
+  command = "npm ci && npm run build"
   publish = "out"
   functions = "netlify/functions"
 
